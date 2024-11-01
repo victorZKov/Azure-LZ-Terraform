@@ -12,3 +12,8 @@ output "defender_status" {
   description = "The status of the defender configuration"
   value       = var.defender_enabled ? "Enabled" : "Disabled"
 }
+
+output "sftp_server_url" {
+  description = "The URL of the SFTP server"
+  value       = azurerm_storage_sftp.sftp.url
+}

@@ -33,3 +33,9 @@ variable "defender_enabled" {
   type        = bool
   default     = false
 }
+
+variable "storage_type" {
+  description = "The type of storage to create. Options are 'SFTP' or 'FileShare'"
+  type        = string
+  default     = "FileShare"
+}

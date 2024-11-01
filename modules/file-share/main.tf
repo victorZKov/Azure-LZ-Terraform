@@ -8,12 +8,20 @@ resource "azurerm_storage_account" "storage_account" {
   location                 = var.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
+  account_kind             = var.storage_type == "SFTP" ? "BlockBlobStorage" : "StorageV2"
 }
 
 resource "azurerm_storage_share" "file_share" {
+  count                = var.storage_type == "FileShare" ? 1 : 0
   name                 = "fileshare"
   storage_account_name = azurerm_storage_account.storage_account.name
   quota                = 50
+}
+
+resource "azurerm_storage_sftp" "sftp" {
+  count                = var.storage_type == "SFTP" ? 1 : 0
+  name                 = "sftp"
+  storage_account_name = azurerm_storage_account.storage_account.name
 }
 
 resource "azurerm_role_assignment" "rbac" {

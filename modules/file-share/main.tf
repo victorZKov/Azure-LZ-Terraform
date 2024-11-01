@@ -32,3 +32,8 @@ resource "azurerm_storage_account_network_rules" "network_rules" {
 
   default_action = "Deny"
 }
+
+resource "azurerm_security_center_storage_defender" "defender" {
+  count              = var.defender_enabled ? 1 : 0
+  storage_account_id = azurerm_storage_account.storage_account.id
+}

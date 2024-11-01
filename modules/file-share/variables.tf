@@ -27,3 +27,9 @@ variable "allowed_ip_addresses" {
   description = "List of allowed IP addresses to access the storage account"
   type        = list(string)
 }
+
+variable "defender_enabled" {
+  description = "Enable or disable defender for the storage account"
+  type        = bool
+  default     = false
+}

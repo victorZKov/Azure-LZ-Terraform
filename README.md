@@ -40,6 +40,7 @@ module "sftp_server" {
 |-----------------------|-----------------------------------------|--------|---------|----------|
 | storage_account_name  | The name of the Storage account         | string | n/a     | yes      |
 | resource_group_name   | The name of the resource group          | string | n/a     | yes      |
+| location              | The location of the resource group      | string | n/a     | yes      |
 | storage_type          | The type of storage to create. Options are 'SFTP' or 'FileShare' | string | "FileShare" | no       |
 | users                 | List of users to assign RBAC roles      | list   | n/a     | yes      |
 | allowed_subnets       | List of allowed subnets to access the storage account | list   | n/a     | yes      |

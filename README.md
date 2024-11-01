@@ -8,10 +8,12 @@ This module creates a Storage account with a File Share configured and assigns R
 
 ```hcl
 module "file_share" {
-  source              = "./modules/file-share"
+  source               = "./modules/file-share"
   storage_account_name = "mystorageaccount"
   resource_group_name  = "myresourcegroup"
   users                = ["user1@example.com", "user2@example.com"]
+  allowed_subnets      = ["subnet1", "subnet2"]
+  allowed_ip_addresses = ["192.168.1.1", "192.168.1.2"]
 }
 ```
 
@@ -22,6 +24,8 @@ module "file_share" {
 | storage_account_name  | The name of the Storage account         | string | n/a     | yes      |
 | resource_group_name   | The name of the resource group          | string | n/a     | yes      |
 | users                 | List of users to assign RBAC roles      | list   | n/a     | yes      |
+| allowed_subnets       | List of allowed subnets to access the storage account | list   | n/a     | yes      |
+| allowed_ip_addresses  | List of allowed IP addresses to access the storage account | list   | n/a     | yes      |
 
 ### Outputs
 

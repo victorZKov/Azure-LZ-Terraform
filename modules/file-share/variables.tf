@@ -17,3 +17,13 @@ variable "users" {
   description = "List of users to assign RBAC roles"
   type        = list(string)
 }
+
+variable "allowed_subnets" {
+  description = "List of allowed subnets to access the storage account"
+  type        = list(string)
+}
+
+variable "allowed_ip_addresses" {
+  description = "List of allowed IP addresses to access the storage account"
+  type        = list(string)
+}

@@ -22,3 +22,13 @@ resource "azurerm_role_assignment" "rbac" {
   role_definition_name = "Storage File Data SMB Share Contributor"
   principal_id         = each.value
 }
+
+resource "azurerm_storage_account_network_rules" "network_rules" {
+  storage_account_name = azurerm_storage_account.storage_account.name
+  resource_group_name  = var.resource_group_name
+
+  virtual_network_subnet_ids = var.allowed_subnets
+  ip_rules                   = var.allowed_ip_addresses
+
+  default_action = "Deny"
+}
